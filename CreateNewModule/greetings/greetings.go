@@ -35,5 +35,4 @@ func randomFormat() string{
     // a random index for the slice of formats.
 
 	return formats[rand.Intn(len(formats))]
-
 }
