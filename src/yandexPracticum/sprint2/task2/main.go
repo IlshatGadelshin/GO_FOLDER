@@ -42,12 +42,9 @@ func calculateOrder(priceMap map[string]int, order []string){
 	
 	var sum int = 0
 
-	for key, value := range	priceMap{
-		for _, piece:=range order{
-			if key==piece{
-				sum+=value
-			}
-		}
+	for _, v:=range order{
+		sum+=priceMap[v]
 	}
+	
 	fmt.Println("стоимость покупки составляет:", sum)
 }
