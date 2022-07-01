@@ -37,6 +37,7 @@ func sliceCut(slice []int)([]int){
 //rotates slice from top to bottom
 func sliceRotate(slice []int)([]int){
 	for i:= range slice[:len(slice)/2]{
+		//меняем значения местами
 		slice[i], slice[len(slice)-i-1]=slice[len(slice)-i-1], slice[i]	
 	}
 	 return slice
