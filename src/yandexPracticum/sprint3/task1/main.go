@@ -28,25 +28,29 @@ func main() {
 	sw.SaveSplit()
 
 	fmt.Println(sw.GetResults())
-   
+
 }
+
 //тип, содержащий поля с временем старта и результата
-type Stopwatch struct{
-    startTimer time.Time
-    result []time.Duration
+type Stopwatch struct {
+	startTimer time.Time
+	result     []time.Duration
 }
+
 //создает точку отсчета/старта
-func (s *Stopwatch)Start() {
-    s.startTimer=time.Now()
+func (s *Stopwatch) Start() {
+	s.startTimer = time.Now()
 }
 
-//сохраняет пройденное время на момент вызова 
-func (s *Stopwatch)SaveSplit() {
-    t:=time.Now()
-    s.result = append(s.result, t.Sub(s.startTimer))
+//сохраняет пройденное время на момент вызова
+func (s *Stopwatch) SaveSplit() {
+	t := time.Now()
+	s.result = append(s.result, t.Sub(s.startTimer))
 }
 
-//выводит результат работы 
-func (s Stopwatch)GetResults() []time.Duration {
-   return s.result
+//выводит результат работы
+func (s Stopwatch) GetResults() []time.Duration {
+	return s.result
 }
+
+//gofmt -w main.go
