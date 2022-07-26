@@ -7,34 +7,46 @@ GetResults() []time.Duration — вернуть текущие результа�
 */
 
 package main
+
 import (
 	"fmt"
 	"time"
 )
+
 //Пример работы:
-func main(){
+func main() {
 	sw := Stopwatch{}
-    sw.Start()
+	sw.Start()
 
-    time.Sleep(1 * time.Second)
-    sw.SaveSplit()
+	time.Sleep(1 * time.Second)
+	sw.SaveSplit()
 
-    time.Sleep(500 * time.Millisecond)
-    sw.SaveSplit()
+	time.Sleep(500 * time.Millisecond)
+	sw.SaveSplit()
 
-    time.Sleep(300 * time.Millisecond)
-    sw.SaveSplit()
+	time.Sleep(300 * time.Millisecond)
+	sw.SaveSplit()
 
-    fmt.Println(sw.GetResults())
+	fmt.Println(sw.GetResults())
+   
 }
-
+//тип, содержащий поля с временем старта и результата
 type Stopwatch struct{
-
-		start 
-		result []float32
-
+    startTimer time.Time
+    result []time.Duration
+}
+//создает точку отсчета/старта
+func (s *Stopwatch)Start() {
+    s.startTimer=time.Now()
 }
 
-func (start *Stopwatch) Start() {
-	//time.Now()
+//сохраняет пройденное время на момент вызова 
+func (s *Stopwatch)SaveSplit() {
+    t:=time.Now()
+    s.result = append(s.result, t.Sub(s.startTimer))
+}
+
+//выводит результат работы 
+func (s Stopwatch)GetResults() []time.Duration {
+   return s.result
 }
