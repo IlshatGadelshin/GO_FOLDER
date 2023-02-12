@@ -1,0 +1,12 @@
+babahop's
+BenchmarkSequentialFrequency-12             5574            211585 ns/op
+BenchmarkConcurrentFrequency-12            16294             73013 ns/op = 1189673822
+
+mine
+BenchmarkSequentialFrequency-12             5546            213251 ns/op
+BenchmarkConcurrentFrequency-12             1261            921593 ns/op = 1162128773
+
+go test -bench .
+
+ For a good solution, you should see that the concurrent version shows a 
+lower number of nano seconds per operation (ns/op) than the sequential version.
